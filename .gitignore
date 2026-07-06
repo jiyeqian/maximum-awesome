@@ -1,2 +1,5 @@
 vim/.netrwhist
 .idea
+
+# macOS
+.DS_Store
