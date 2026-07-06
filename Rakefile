@@ -195,7 +195,7 @@ exec /Applications/MacVim.app/Contents/MacOS/Vim "$@"
   task :vim_plug do
     step 'vim-plug'
     install_vim_plug
-    sh '~/bin/vim -c "PlugUpdate --sync" -c "q" -c "q"'
+    sh '~/bin/vim -c "PlugInstall --sync" -c "q" -c "q"'
   end
 end
 
