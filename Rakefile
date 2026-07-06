@@ -25,9 +25,11 @@ def version_match?(requirement, version)
   Gem::Dependency.new('', requirement).match?('', matches.captures[0])
 end
 
-def install_github_bundle(user, package)
-  unless File.exist? File.expand_path("~/.vim/bundle/#{package}")
-    sh "git clone https://github.com/#{user}/#{package} ~/.vim/bundle/#{package}"
+def install_vim_plug
+  plug_path = File.expand_path('~/.vim/autoload/plug.vim')
+  unless File.exist? plug_path
+    FileUtils.mkdir_p File.dirname(plug_path)
+    sh "curl -fLo #{plug_path} https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
   end
 end
 
@@ -189,11 +191,11 @@ exec /Applications/MacVim.app/Contents/MacOS/Vim "$@"
     end
   end
 
-  desc 'Install Vundle'
-  task :vundle do
-    step 'vundle'
-    install_github_bundle 'VundleVim','Vundle.vim'
-    sh '~/bin/vim -c "PluginInstall!" -c "q" -c "q"'
+  desc 'Install vim-plug'
+  task :vim_plug do
+    step 'vim-plug'
+    install_vim_plug
+    sh '~/bin/vim -c "PlugUpdate --sync" -c "q" -c "q"'
   end
 end
 
@@ -240,8 +242,8 @@ task :install do
     cp orig, copy, :verbose => true unless File.exist?(copy)
   end
 
-  # Install Vundle and bundles
-  Rake::Task['install:vundle'].invoke
+  # Install vim-plug and bundles
+  Rake::Task['install:vim_plug'].invoke
 
   step 'iterm2 colorschemes'
   colorschemes = `defaults read com.googlecode.iterm2 'Custom Color Presets'`

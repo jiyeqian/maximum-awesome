@@ -4,21 +4,23 @@ set nocompatible
 " enable syntax highlighting
 syntax enable
 
-" configure Vundle
+" configure vim-plug
 filetype on " without this vim emits a zero exit status, later, because of :ft off
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-" install Vundle bundles
+" install vim-plug bundles
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
+endif
+
+if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
 endif
 
-call vundle#end()
+call plug#end()
 
-" ensure ftdetect et al work by including this after the Vundle stuff
+" ensure ftdetect et al work by including this after the vim-plug stuff
 filetype plugin indent on
 
 set autoindent
