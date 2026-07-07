@@ -33,13 +33,6 @@ def install_vim_plug
   end
 end
 
-def brew_cask_install(package, *options)
-  output = `brew info --cask #{package}`
-  return unless output.include?('Not installed')
-
-  sh "brew install --cask #{package} #{options.join ' '}"
-end
-
 def step(description)
   description = "-- #{description} "
   description = description.ljust(80, '-')
@@ -139,7 +132,7 @@ namespace :install do
   task :iterm do
     step 'iterm2'
     unless app? 'iTerm'
-      brew_cask_install 'iterm2'
+      brew_install 'iterm2'
     end
   end
 
@@ -166,7 +159,7 @@ namespace :install do
   task :macvim do
     step 'MacVim'
     unless app? 'MacVim'
-      brew_cask_install 'macvim'
+      brew_install 'macvim-app'
     end
 
     bin_dir = File.expand_path('~/bin')
