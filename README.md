@@ -3,6 +3,19 @@
 Config files for vim and tmux, lovingly tended by a small subculture of
 peace-loving hippies. Built for Mac OS X.
 
+## About this fork
+
+This repository is forked from
+[square/maximum-awesome](https://github.com/square/maximum-awesome).
+
+Notable changes in this fork:
+
+* Vim plugins are managed with [vim-plug](https://github.com/junegunn/vim-plug)
+  instead of Vundle.
+* Homebrew installs are routed through a single `brew_install` helper; cask
+  installs no longer use `brew install --cask`.
+* The MacVim app is installed with the Homebrew `macvim-app` package.
+
 ## What's in it?
 
 * [MacVim](https://github.com/macvim-dev/macvim) (independent or for use in a terminal)
@@ -50,6 +63,9 @@ You can adjust the size of the smaller panes in `tmux.conf` by lowering or incre
 ## Install
 
     rake
+
+The install task installs Homebrew packages and apps, including iTerm2 and
+MacVim. MacVim is installed via the Homebrew `macvim-app` package.
 
 ## Update
 
