@@ -142,12 +142,6 @@ namespace :install do
     brew_install 'ctags'
   end
 
-  desc 'Install reattach-to-user-namespace'
-  task :reattach_to_user_namespace do
-    step 'reattach-to-user-namespace'
-    brew_install 'reattach-to-user-namespace'
-  end
-
   desc 'Install tmux'
   task :tmux do
     step 'tmux'
@@ -218,7 +212,6 @@ task :install do
   Rake::Task['install:the_silver_searcher'].invoke
   Rake::Task['install:iterm'].invoke
   Rake::Task['install:ctags'].invoke
-  Rake::Task['install:reattach_to_user_namespace'].invoke
   Rake::Task['install:tmux'].invoke
   Rake::Task['install:macvim'].invoke
 
