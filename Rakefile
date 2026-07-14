@@ -122,10 +122,10 @@ namespace :install do
     end
   end
 
-  desc 'Install The Silver Searcher'
-  task :the_silver_searcher do
-    step 'the_silver_searcher'
-    brew_install 'the_silver_searcher'
+  desc 'Install ripgrep'
+  task :ripgrep do
+    step 'ripgrep'
+    brew_install 'ripgrep'
   end
 
   desc 'Install iTerm'
@@ -209,7 +209,7 @@ LINKED_FILES = filemap(
 desc 'Install these config files.'
 task :install do
   Rake::Task['install:brew'].invoke
-  Rake::Task['install:the_silver_searcher'].invoke
+  Rake::Task['install:ripgrep'].invoke
   Rake::Task['install:iterm'].invoke
   Rake::Task['install:ctags'].invoke
   Rake::Task['install:tmux'].invoke
