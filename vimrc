@@ -20,6 +20,9 @@ endif
 
 call plug#end()
 
+" Load the matchit plugin included with Vim.
+packadd! matchit
+
 " ensure ftdetect et al work by including this after the vim-plug stuff
 filetype plugin indent on
 
@@ -60,7 +63,8 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
-noremap <leader>l :Align
+nmap <leader>l <Plug>(EasyAlign)
+xmap <leader>l <Plug>(EasyAlign)
 nnoremap <leader>a :grep<space>
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>d :NERDTreeToggle<CR>
@@ -79,6 +83,12 @@ cnoremap w!! %!sudo tee > /dev/null %
 let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:NERDSpaceDelims=1
 let g:gitgutter_enabled = 0
+
+" Run JavaScript diagnostics with ESLint and preserve save-oriented linting.
+let g:ale_linters = { 'javascript': ['eslint'] }
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_virtualtext_cursor = 'disabled'
 
 " use the new SnipMate parser
 let g:snipMate = { 'snippet_version' : 1 }

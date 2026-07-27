@@ -33,7 +33,7 @@ You can change your leader key using the following setting in your `.vimrc`:
 `let mapleader=','`
 
 
-* `,d` brings up [NERDTree](https://github.com/scrooloose/nerdtree), a sidebar buffer for navigating and manipulating files
+* `,d` brings up [NERDTree](https://github.com/preservim/nerdtree), a sidebar buffer for navigating and manipulating files
 * `,t` brings up [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim), a project file filter for easily opening specific files
 * `,b` restricts ctrlp.vim to open buffers
 * `,a` searches the project with Vim's quickfix list using ripgrep.
@@ -44,8 +44,13 @@ You can change your leader key using the following setting in your `.vimrc`:
 * `Vp`/`vp` replaces visual selection with default register *without* yanking selected text (works with any visual selection)
 * `,[space]` strips trailing whitespace
 * `<C-]>` jump to definition using ctags
-* `,l` begins aligning lines on a string, usually used as `,l=` to align assignments
+* `,l` starts [EasyAlign](https://github.com/junegunn/vim-easy-align); use a motion and delimiter such as `,lip=` to align assignments in a paragraph, or select lines and use `,l=`
 * `<C-hjkl>` move between windows, shorthand for `<C-w> hjkl`
+
+Syntax checking is provided by [ALE](https://github.com/dense-analysis/ale).
+Linters such as ESLint must be installed by each project. The legacy `:Pastie`
+command is no longer included; a paste plugin can be added in
+`~/.vimrc.bundles.local` when needed.
 
 ### tmux
 
