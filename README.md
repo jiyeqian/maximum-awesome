@@ -15,6 +15,7 @@ Notable changes in this fork:
 * Homebrew installs are routed through a single `brew_install` helper; cask
   installs no longer use `brew install --cask`.
 * The MacVim app is installed with the Homebrew `macvim-app` package.
+* Ruby and Rails plugins are optional and are kept out of the core plugin set.
 
 ## What's in it?
 
@@ -51,6 +52,18 @@ Syntax checking is provided by [ALE](https://github.com/dense-analysis/ale).
 Linters such as ESLint must be installed by each project. The legacy `:Pastie`
 command is no longer included; a paste plugin can be added in
 `~/.vimrc.bundles.local` when needed.
+
+Ruby and Rails plugins are optional and are kept out of the core plugin set.
+Add the following lines to `~/.vimrc.bundles.local` if Ruby/Rails support is
+needed:
+
+    Plug 'tpope/vim-bundler'
+    Plug 'tpope/vim-cucumber'
+    Plug 'tpope/vim-endwise'
+    Plug 'tpope/vim-rails'
+    Plug 'vim-ruby/vim-ruby'
+
+Rails navigation extensions can be customized in `~/.vimrc.local`.
 
 ### tmux
 
